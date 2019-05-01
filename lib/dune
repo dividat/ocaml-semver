@@ -1,0 +1,4 @@
+(library
+ (name semver)
+ (public_name semver)
+ (libraries re angstrom))

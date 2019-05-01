@@ -1,0 +1,16 @@
+opam-version: "2.0"
+maintainer: "emilien@dividat.com"
+authors: ["Emilien Taque"]
+lience: "MIT"
+depends: [
+  "ocaml" {>= "4.04.0"}
+  "dune" {build & >= "1.2.0"}
+  "ounit" {with-test & >= "1.0.2"}
+  "re" {>= "1.7.2"}
+  "stringext" {>= "1.4.0"}
+]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]

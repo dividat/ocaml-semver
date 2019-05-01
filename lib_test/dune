@@ -1,0 +1,8 @@
+(executables
+ (names test_semver)
+ (libraries semver ounit yojson))
+
+(alias
+ (name    runtest)
+ (deps    test_semver.exe fixtures.json)
+(action (run %{deps})))
