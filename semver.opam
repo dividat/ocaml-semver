@@ -8,11 +8,11 @@ bug-reports: "https://github.com/dividat/ocaml-semver/issues"
 depends: [
   "ocaml" {>= "4.04.0"}
   "dune" {build & >= "1.2.0"}
-  "odoc"
   "angstrom" {>= "0.11.2"}
   "ppx_inline_test" {with-test & >= "0.12.0"}
   "ounit" {with-test & >= "1.0.2"}
   "yojson" {with-test & >= "1.4.1"}
+  "odoc" {with-doc}
 ]
 build: [
   ["dune" "subst"] {pinned}
