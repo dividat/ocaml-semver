@@ -1,13 +1,18 @@
 opam-version: "2.0"
 maintainer: "emilien@dividat.com"
 authors: ["Emilien Taque"]
-lience: "MIT"
+synopsis: "Semantic version handling for OCaml"
+license: "MIT"
+homepage: "https://github.com/dividat/ocaml-semver"
+bug-reports: "https://github.com/dividat/ocaml-semver/issues"
 depends: [
   "ocaml" {>= "4.04.0"}
   "dune" {build & >= "1.2.0"}
+  "angstrom" {>= "0.11.2"}
+  "ppx_inline_test" {with-test & >= "0.12.0"}
   "ounit" {with-test & >= "1.0.2"}
-  "re" {>= "1.7.2"}
-  "stringext" {>= "1.4.0"}
+  "yojson" {with-test & >= "1.4.1"}
+  "odoc" {with-doc}
 ]
 build: [
   ["dune" "subst"] {pinned}
