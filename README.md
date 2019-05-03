@@ -12,9 +12,13 @@ This library provides basic functions for working with semantic version numbers:
 
 Please refer to the module documentation for its API.
 
-## Tests
+## Local development
 
-Run the test suite with:
+An OCaml and Opam environment is required. Library dependencies can be installed with:
+
+    $ make install-deps
+
+Then you can run the test suite with:
 
     $ make test
 
