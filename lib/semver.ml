@@ -11,6 +11,12 @@ type t = {
 let mk_version major minor patch prerelease build =
   { major; minor; patch; prerelease; build }
 
+let from_parts major minor patch prerelease build =
+  if major >= 0 && minor >= 0 && patch >= 0 then
+    Some (mk_version major minor patch prerelease build)
+  else
+    None
+
 let to_string v =
   let print_series mark identifiers =
     match identifiers with

@@ -33,10 +33,19 @@ let test_compare () =
     sorted
     (sorted |> of_string_list [] |> List.sort compare |> List.map to_string)
 
+let test_from_parts () =
+  let is_success = function
+    | None -> false
+    | Some _ -> true
+  in
+  assert_bool "negative version rejected" (not (is_success (from_parts (-1) 0 2 [] [])));
+  assert_bool "positive version accepted" (is_success (from_parts 1 0 2 [] []))
+
 let suite =
   "semver suite" >:::
   ["test valids" >:: test_valids;
    "test invalids" >:: test_invalids;
-   "test compare" >:: test_compare]
+   "test compare" >:: test_compare;
+   "test from_parts" >:: test_from_parts]
 
 let _ = run_test_tt_main suite

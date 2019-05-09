@@ -15,6 +15,9 @@ type t = private {
   build: string list;
 }
 
+(** Build a valid version from parts. Require positive values for major, minor and patch params. *)
+val from_parts : int -> int -> int -> string list -> string list -> t option
+
 (** Convert a version to its string representation. *)
 val to_string : t -> string
 
