@@ -33,7 +33,7 @@ Contributions are welcome in the form of issues or pull requests. Please remembe
 
 ## Copyright and Licensing
 
-(C) 2017 Dividat AG.
+(C) 2019 Dividat AG.
 
 Published under MIT license.
 
