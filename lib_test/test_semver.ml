@@ -38,8 +38,12 @@ let test_from_parts () =
     | None -> false
     | Some _ -> true
   in
-  assert_bool "negative version rejected" (not (is_success (from_parts (-1) 0 2 [] [])));
-  assert_bool "positive version accepted" (is_success (from_parts 1 0 2 [] []))
+  assert_bool "negative version rejected"
+    (not (is_success (from_parts (-1) 0 2 [] [])));
+  assert_bool "invalid prerelease rejected"
+    (not (is_success (from_parts 1 0 0 ["0.03.7"] [])));
+  assert_bool "positive version accepted"
+    (is_success (from_parts 1 0 2 [] []))
 
 let suite =
   "semver suite" >:::
