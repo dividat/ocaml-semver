@@ -80,8 +80,12 @@ let from_parts major minor patch prerelease build =
   let check_prerelease_item s =
     parse_string (prerelease_identifier <* end_of_input) s |> isOk
   in
+  let check_build_item s =
+    parse_string (base_identifier <* end_of_input) s |> isOk
+  in
   if major >= 0 && minor >= 0 && patch >= 0 &&
-     List.for_all check_prerelease_item prerelease then
+     List.for_all check_prerelease_item prerelease &&
+     List.for_all check_build_item build then
     Some (mk_version major minor patch prerelease build)
   else
     None
