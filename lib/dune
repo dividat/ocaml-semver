@@ -1,6 +1,4 @@
 (library
  (name semver)
  (public_name semver2)
- (libraries angstrom)
- (inline_tests)
- (preprocess (pps ppx_inline_test)))
+ (libraries angstrom))

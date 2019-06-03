@@ -36,18 +36,6 @@ let isOk = function
   | Ok _ -> true
   | Error _ -> false
 
-let%test "natural number is ok" =
-  parse_string (nat <* end_of_input) "123" |> isOk
-
-let%test "number with leading zero fails" =
-  parse_string (nat <* end_of_input) "0123" |> isOk |> not
-
-let%test "0 is ok" =
-  parse_string (nat <* end_of_input) "0" |> isOk
-
-let%test "alphanum fails" =
-  parse_string (nat <* end_of_input) "0hey" |> isOk |> not
-
 let dot =
   char '.'
 
@@ -121,15 +109,6 @@ let compare_identifiers ia ib =
   | _, Ok _ -> 1
   | _ -> compare ia ib
 
-let%test "numeric lower than non-numeric" =
-  compare_identifiers "1" "beta" == -1
-
-let%test "numeric comparison" =
-  compare_identifiers "2" "11" == -1
-
-let%test "alphabetical comparison" =
-  compare_identifiers "alpha" "beta" == -1
-
 let rec compare_prerelease is_first pra prb =
   match pra, prb with
   | [], [] -> 0
@@ -140,12 +119,6 @@ let rec compare_prerelease is_first pra prb =
       compare_identifiers ia ib
     else
       compare_prerelease false ta tb
-
-let%test "larger set has higher precedence" =
-  compare_prerelease true ["alpha"] ["alpha"; "1"] == -1
-
-let%test "compare first non-equal identifiers" =
-  compare_prerelease true ["alpha"; "1"] ["alpha"; "beta"] == -1
 
 let compare a b =
   if a.major != b.major then
