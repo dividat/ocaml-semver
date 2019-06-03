@@ -11,12 +11,6 @@ type t = {
 let mk_version major minor patch prerelease build =
   { major; minor; patch; prerelease; build }
 
-let from_parts major minor patch prerelease build =
-  if major >= 0 && minor >= 0 && patch >= 0 then
-    Some (mk_version major minor patch prerelease build)
-  else
-    None
-
 let to_string v =
   let print_series mark identifiers =
     match identifiers with
@@ -81,6 +75,20 @@ let version_parser =
      (identifier_list prerelease_identifier '-')
    <*> (identifier_list base_identifier '+'))
   <* end_of_input
+
+let from_parts major minor patch prerelease build =
+  let check_prerelease_item s =
+    parse_string (prerelease_identifier <* end_of_input) s |> isOk
+  in
+  let check_build_item s =
+    parse_string (base_identifier <* end_of_input) s |> isOk
+  in
+  if major >= 0 && minor >= 0 && patch >= 0 &&
+     List.for_all check_prerelease_item prerelease &&
+     List.for_all check_build_item build then
+    Some (mk_version major minor patch prerelease build)
+  else
+    None
 
 let of_string str =
   match parse_string version_parser str with
