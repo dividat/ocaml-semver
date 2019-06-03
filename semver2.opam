@@ -2,7 +2,7 @@ opam-version: "2.0"
 name: "semver2"
 version: "1.0.0"
 maintainer: "info@dividat.com"
-authors: ["Dividat Gmbh"]
+authors: ["Dividat AG"]
 synopsis: "Semantic version handling for OCaml"
 license: "MIT"
 homepage: "https://github.com/dividat/ocaml-semver"

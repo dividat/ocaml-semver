@@ -1,6 +1,6 @@
 (executable
  (name test_semver)
- (libraries semver ounit yojson))
+ (libraries semver2 ounit yojson))
 
 (alias
  (name    runtest)

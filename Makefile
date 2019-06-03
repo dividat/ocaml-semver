@@ -4,7 +4,7 @@ build:
 	dune build @install
 
 install-deps:
-	opam install --deps-only ./semver.opam
+	opam install --deps-only ./semver2.opam
 
 test:
 	dune runtest
