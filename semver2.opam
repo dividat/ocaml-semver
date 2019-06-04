@@ -1,6 +1,6 @@
 opam-version: "2.0"
 name: "semver2"
-version: "1.0.2"
+version: "1.0.0"
 maintainer: "info@dividat.com"
 authors: ["Dividat AG"]
 synopsis: "Semantic version handling for OCaml"
