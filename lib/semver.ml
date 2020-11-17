@@ -56,20 +56,19 @@ let identifier_list id_parser sep =
   char sep *> sep_by1 dot id_parser <|> return []
 
 let version_parser =
-  (lift4 mk_version
+  lift4 mk_version
      nat
      (dot *> nat)
      (dot *> nat)
      (identifier_list prerelease_identifier '-')
-   <*> (identifier_list base_identifier '+'))
-  <* end_of_input
+   <*> (identifier_list base_identifier '+')
 
 let from_parts major minor patch prerelease build =
   let check_prerelease_item s =
-    parse_string (prerelease_identifier <* end_of_input) s |> isOk
+    parse_string ~consume:All prerelease_identifier s |> isOk
   in
   let check_build_item s =
-    parse_string (base_identifier <* end_of_input) s |> isOk
+    parse_string ~consume:All base_identifier s |> isOk
   in
   if major >= 0 && minor >= 0 && patch >= 0 &&
      List.for_all check_prerelease_item prerelease &&
@@ -79,12 +78,12 @@ let from_parts major minor patch prerelease build =
     None
 
 let of_string str =
-  match parse_string version_parser str with
+  match parse_string ~consume:All version_parser str with
   | Ok v -> Some v
   | Error _ -> None
 
 let is_valid str =
-  match parse_string version_parser str with
+  match parse_string ~consume:All version_parser str with
   | Ok _ -> true
   | Error _ -> false
 
@@ -103,7 +102,7 @@ let is_valid str =
    <https://semver.org/#spec-item-11>
 *)
 let compare_identifiers ia ib =
-  match parse_string (nat <* end_of_input) ia, parse_string (nat <* end_of_input) ib with
+  match parse_string ~consume:All nat ia, parse_string ~consume:All nat ib with
   | Ok na, Ok nb -> compare na nb
   | Ok _, _ -> -1
   | _, Ok _ -> 1

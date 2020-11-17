@@ -14,14 +14,28 @@ Please refer to the module documentation for its API.
 
 ## Local development
 
-An OCaml and Opam environment is required. Library dependencies can be installed with:
+The following dependencies are required:
+
+-   ocaml
+-   opam
+-   m4
+-   pkg-config
+
+Opam needs to be initialized:
+
+    $ opam init
+
+Library dependencies can be installed with:
 
     $ make install-deps
+
+Make sure to have an updated shell environment:
+
+    $ eval $(opam env)
 
 Then you can run the test suite with:
 
     $ make test
-
 
 ## Contributing
 
@@ -33,7 +47,6 @@ Contributions are welcome in the form of issues or pull requests. Please remembe
 
 ## Copyright and Licensing
 
-(C) 2019 Dividat AG.
+(C) 2020 Dividat AG.
 
 Published under MIT license.
-
