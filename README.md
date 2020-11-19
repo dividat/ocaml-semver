@@ -37,6 +37,20 @@ Then you can run the test suite with:
 
     $ make test
 
+## Publishing to opam
+
+Whenever a new tag is pushed, you can [publish the new version to opam](
+https://opam.ocaml.org/doc/Packaging.html).
+
+The following dependencies are required to build `opam-publish`:
+
+- ocaml
+- opam
+- m4
+- pkgconfig
+- openssl
+- gmp
+
 ## Contributing
 
 Contributions are welcome in the form of issues or pull requests. Please remember to:
