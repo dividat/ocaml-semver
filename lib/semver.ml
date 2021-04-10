@@ -119,6 +119,9 @@ let rec compare_prerelease is_first pra prb =
     else
       compare_prerelease false ta tb
 
+let pp fmt version =
+  Format.pp_print_string fmt (to_string version)
+
 let compare a b =
   if a.major != b.major then
     compare a.major b.major
@@ -127,6 +130,9 @@ let compare a b =
   else if a.patch != b.patch then
     compare a.patch b.patch
   else compare_prerelease true a.prerelease b.prerelease
+
+let equal a b =
+  compare a b = 0
 
 let less_than a b =
   compare a b < 0
