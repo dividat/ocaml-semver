@@ -20,6 +20,9 @@ let to_string v =
   string_of_int v.major ^ "." ^ string_of_int v.minor ^ "." ^ string_of_int v.patch ^
   print_series "-" v.prerelease ^ print_series "+" v.build
 
+let pp fmt version =
+  Format.pp_print_string fmt (to_string version)
+
 let is_digit = function '0' .. '9' -> true | _ -> false
 
 let no_leading_zero str =
@@ -118,9 +121,6 @@ let rec compare_prerelease is_first pra prb =
       compare_identifiers ia ib
     else
       compare_prerelease false ta tb
-
-let pp fmt version =
-  Format.pp_print_string fmt (to_string version)
 
 let compare a b =
   if a.major != b.major then

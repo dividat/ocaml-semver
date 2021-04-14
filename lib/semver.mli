@@ -36,8 +36,8 @@ val less_than : t -> t -> bool
 (** Return true if first has higher precedence than second. *)
 val greater_than : t -> t -> bool
 
-(** Return whether versions are equal *)
+(** Return whether versions are equal. *)
 val equal : t -> t -> bool
 
-(** Pretty print version *)
+(** Pretty print version. *)
 val pp : Format.formatter -> t -> unit
