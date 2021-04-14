@@ -10,7 +10,9 @@ let valids, invalids, sorted =
 let test_valids () =
   let assert_iso v =
     match of_string v with
-    | Some v' -> assert_equal (to_string v') v
+    | Some v' ->
+       assert_equal (to_string v') v;
+       assert_equal (Format.asprintf "%a" Semver.pp v') v
     | None -> assert_failure ("valid version detected as invalid: " ^ v)
   in
   List.iter assert_iso valids
