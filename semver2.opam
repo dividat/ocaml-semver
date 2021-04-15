@@ -7,6 +7,7 @@ synopsis: "Semantic version handling for OCaml"
 license: "MIT"
 homepage: "https://github.com/dividat/ocaml-semver"
 bug-reports: "https://github.com/dividat/ocaml-semver/issues"
+dev-repo: "git+https://github.com/dividat/ocaml-semver.git"
 depends: [
   "ocaml" {>= "4.04.0"}
   "dune" {>= "1.2.0"}
@@ -16,7 +17,7 @@ depends: [
   "odoc" {with-doc}
 ]
 build: [
-  ["dune" "subst"] {pinned}
+  ["dune" "subst"] {dev}
   ["dune" "build" "-p" name "-j" jobs]
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
